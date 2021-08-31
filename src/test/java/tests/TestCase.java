@@ -4,6 +4,9 @@ package tests;
 import org.testng.annotations.Test;
 import org.testng.annotations.Test;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -31,7 +34,7 @@ public class TestCase extends BaseClass{
 				
 	}
 	@Test(priority=1)
-	public void Checkout() {
+	public void Checkout() throws IOException {
 		log.info("Starting Checkout Scenario");
 		Login login=new Login(driver);
 		login.clickonLogin("standard_user","secret_sauce");
@@ -67,7 +70,7 @@ public class TestCase extends BaseClass{
 		
 	}
 	@Test(priority=4)
-	public void problemUser() {
+	public void problemUser() throws IOException {
 		driver=BaseClass.setUp();
 		Login login=new Login(driver);
 		login.clickonLogin("problem_user","secret_sauce");
@@ -120,7 +123,7 @@ public class TestCase extends BaseClass{
 		menu.clickon_GeoLocationOption();
 	}
 	@Test(priority=9)
-	public void RemoveFromCart() {
+	public void RemoveFromCart() throws IOException {
 		driver=BaseClass.setUp();
 		Add_Remove_Cart add=new Add_Remove_Cart(driver);
 		add.scrollDown();

@@ -1,6 +1,8 @@
 package page;
 
 import static org.testng.AssertJUnit.assertEquals;
+
+import java.io.IOException;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
@@ -25,7 +27,7 @@ public class Add_Remove_Cart extends BaseClass{
 		
 	}
 //	Logger log=new Logger.getLogger(BaseClass.class);
-	public void add_ToCart(int num) {
+	public void add_ToCart(int num) throws IOException {
 		String ele="(//android.view.ViewGroup[@content-desc=\"test-ADD TO CART\"])[";
 		String strend="]";
 		String i=String.valueOf(num);
@@ -44,6 +46,8 @@ public class Add_Remove_Cart extends BaseClass{
 			String product=driver.findElement(By.xpath("(//android.widget.TextView[@content-desc=\"test-Item title\"])[2]")).getText();
 			System.out.println("Bug: Could not add the product "+product);
 			log.info("Bug: Could not add the product "+product);
+			ScreenshotUtility scrnsht=new ScreenshotUtility(driver);
+			scrnsht.screenshot();
 		}
 		
 
@@ -129,7 +133,7 @@ public class Add_Remove_Cart extends BaseClass{
 	public void backtoHome() {
 		driver.findElement(MobileBy.AccessibilityId("test-BACK HOME")).click();
 	}
-	public void detailPageVerification() {
+	public void detailPageVerification() throws IOException {
 		String HomePageEletext=driver.findElement(By.xpath("(//android.widget.TextView[@content-desc=\"test-Item title\"])[2]")).getText();
 		driver.findElement(By.xpath("(//android.widget.TextView[@content-desc=\"test-Item title\"])[2]")).click();
 		String Detailpagetext=driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"test-Description\"]/android.widget.TextView[1]")).getText();
@@ -142,6 +146,8 @@ public class Add_Remove_Cart extends BaseClass{
          else {
         	 System.out.println("Bug: "+HomePageEletext+"- Product Name is not same in Home page and Detail Page");
         	 log.info("Bug: "+HomePageEletext+"- Product Name is not same in Home page and Detail Page");
+        	 ScreenshotUtility scrnsht=new ScreenshotUtility(driver);
+ 			 scrnsht.screenshot();
          }
 		
 	}

@@ -56,7 +56,7 @@ public class Login extends BaseClass {
 //			log.info("Loggedin Successfully");
 		}
 		}catch(org.openqa.selenium.NoSuchElementException e) {
-			String errmsg=driver.findElement(MobileBy.xpath("//android.view.ViewGroup[@content-desc=\"test-Error message\"]/android.widget.TextView")).getText();
+			String errmsg=driver.findElement(MobileBy.xpath("//android.view.ViewGroup[@content-desc='test-Error message']/android.widget.TextView")).getText();
 			System.out.println(errmsg);
 			log.info(errmsg);
 			

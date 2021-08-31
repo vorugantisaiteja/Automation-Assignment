@@ -42,10 +42,10 @@ public class MenuNavigation extends BaseClass{
 		afterSorting(filtertype4);
 	}
 	public void afterSorting(String filtertype) {
-		String ProductName1=driver.findElement(MobileBy.xpath("(//android.widget.TextView[@content-desc=\"test-Item title\"])[1]")).getText();
-	    String Price1=driver.findElement(MobileBy.xpath("(//android.widget.TextView[@content-desc=\"test-Price\"])[1]")).getText();
-	    String ProductName2=driver.findElement(MobileBy.xpath("(//android.widget.TextView[@content-desc=\"test-Item title\"])[2]")).getText();
-	    String Price2=driver.findElement(MobileBy.xpath("(//android.widget.TextView[@content-desc=\"test-Price\"])[2]")).getText();
+		String ProductName1=driver.findElement(MobileBy.xpath("(//android.widget.TextView[@content-desc='test-Item title'])[1]")).getText();
+	    String Price1=driver.findElement(MobileBy.xpath("(//android.widget.TextView[@content-desc='test-Price'])[1]")).getText();
+	    String ProductName2=driver.findElement(MobileBy.xpath("(//android.widget.TextView[@content-desc='test-Item title'])[2]")).getText();
+	    String Price2=driver.findElement(MobileBy.xpath("(//android.widget.TextView[@content-desc='test-Price'])[2]")).getText();
 	    System.out.println("-------------------------------------"); 
 	    System.out.println("Details after filtering w.r.t "+filtertype);
 	    System.out.println(ProductName1 +" "+ Price1);
@@ -90,12 +90,21 @@ public class MenuNavigation extends BaseClass{
 	}
     public void clickon_QRCodeScannerOption() {
     	menuClick();
-		driver.findElement(MobileBy.AccessibilityId("test-QR CODE SCANNER")).click();
+		driver.findElement(MobileBy.xpath("//android.view.ViewGroup[@content-desc=\"test-QR CODE SCANNER\"]")).click();
 		try {
 			
     	if(driver.findElementById("com.android.permissioncontroller:id/permission_allow_button").isDisplayed()) {
     		driver.findElementById("com.android.permissioncontroller:id/permission_allow_button").click();
 //    		System.out.println("Successfully Navigated to WebView Selction Page");
+    		try {
+				
+    			if(driver.findElementByXPath("//android.widget.TextView[@text='Scan a QR Code that contains a url.']").isDisplayed()) {
+                    System.out.println("QR Code Scanner is launched");				
+    			}
+        	}catch(org.openqa.selenium.NoSuchElementException e1) {
+        		System.out.println("QR Code Scanner is not launched");
+        		
+        	}
     	}
 		}catch(org.openqa.selenium.NoSuchElementException e) {
 			try {
@@ -119,6 +128,19 @@ public class MenuNavigation extends BaseClass{
         	if(driver.findElementById("com.android.permissioncontroller:id/permission_allow_always_button").isDisplayed()) {
         		driver.findElementById("com.android.permissioncontroller:id/permission_allow_always_button").click();
 //        		System.out.println("Successfully Navigated to WebView Selction Page");
+        		try {
+    				
+        			if(driver.findElementByXPath("//android.widget.TextView[@text='GEO LOCATION']").isDisplayed()) {
+                        System.out.println("Navigated to Geo Location Page");
+                        System.out.println("Latitude and Longitude values are displayed");
+                        
+                        
+        			}
+            	}catch(org.openqa.selenium.NoSuchElementException e1) {
+            		System.out.println("Not Navigated to Geo Location Page");
+            		
+            	}
+        		
         	}
     		}catch(org.openqa.selenium.NoSuchElementException e) {
     			try {

@@ -5,8 +5,9 @@
     <classes>
       <class name="tests.TestCase">
         <methods>
-          <include name="problemUser"/>
+          <include name="autoFillLogin"/>
           <include name="quit"/>
+          <include name="filterActions"/>
           <include name="applaunch"/>
         </methods>
       </class> <!-- tests.TestCase -->
